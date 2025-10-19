@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Theft Auto V / Mod / Status</title>
+<style>
+:root{
+  --neon-lila:#b57cff;
+  --neon-blue:#6ac1ff;
+  --neon-pink:#ff69b4;
+  --green:#6ff3a7;
+  --red:#ff6a6a;
+  --yellow:orange;
+  --gray:gray;
+  --text:#000000; /* Schwarz für Lesbarkeit */
+  --glass:rgba(255,255,255,0.25);
+}
+
+/* General */
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Arial',sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+
+  background: url('nice.jpg') no-repeat center center fixed;
+  background-size: cover;
+
+  color: var(--text);
+}
+
+header{text-align:center;margin-bottom:40px;}
+header h1{
+  font-size:48px;font-weight:900;
+  background:linear-gradient(90deg,var(--neon-lila),var(--neon-blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:0 0 30px rgba(181,124,255,1);
+  animation:pulseText 2s infinite alternate;
+}
+@keyframes pulseText{
+  0%{text-shadow:0 0 20px rgba(181,124,255,0.8);}
+  100%{text-shadow:0 0 50px rgba(106,193,255,1);}
+}
+
+main{display:flex;flex-direction:column;width:100%;max-width:1600px;gap:25px;}
+
+/* Login */
+#login{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:350px;width:100%;max-width:600px;
+  background:var(--glass);padding:40px;border-radius:16px;
+  border:2px solid rgba(255,255,255,0.2);box-shadow:0 6px 40px rgba(0,0,0,0.6);
+}
+#login input{
+  padding:16px;width:100%;border-radius:12px;border:2px solid rgba(255,255,255,0.3);
+  background:transparent;color:var(--text);margin-bottom:20px;font-size:18px;
+}
+#login button{
+  padding:16px 24px;border:none;border-radius:12px;
+  background:linear-gradient(90deg,var(--neon-lila),var(--neon-blue));
+  color:#fff;cursor:pointer;font-weight:900;font-size:18px;transition:all 0.2s ease-in-out;
+  animation:pulseBtn 2s infinite alternate;
+}
+#login button:hover{box-shadow:0 0 40px var(--neon-lila);transform:scale(1.1);}
+#login .error{color:var(--red);margin-top:15px;font-weight:bold;font-size:16px;}
+@keyframes pulseBtn{
+  0%{box-shadow:0 0 20px var(--neon-lila);}
+  100%{box-shadow:0 0 50px var(--neon-blue);}
+}
+
+/* Manager */
+#manager{display:none;flex:1;flex-direction:column;width:100%;gap:25px;}
+
+/* Slot Row */
+.slot{
+  display:flex;align-items:center;justify-content:space-between;gap:15px;
+  padding:16px 20px;background:rgba(255,255,255,0.15);border-radius:14px;
+  border:2px solid rgba(255,255,255,0.15);
+  animation:pulseSlot 2s infinite alternate;
+}
+.slot:hover{transform:scale(1.03);box-shadow:0 0 35px rgba(181,124,255,0.8);}
+@keyframes pulseSlot{
+  0%{box-shadow:0 0 10px rgba(181,124,255,0.4);}
+  100%{box-shadow:0 0 40px rgba(106,193,255,0.9);}
+}
+.slot a{
+  color: black;
+  text-decoration:none;
+  font-weight:900;
+  font-size:18px;
+  white-space:normal;
+  overflow:visible;
+}
+
+/* Status */
+.status{
+  font-weight:900;
+  font-size:16px;
+  padding:6px 12px;
+  border-radius:10px;
+  background: rgba(255,255,255,0.4);
+  white-space:normal;
+  overflow:visible;
+}
+.status.detect{color:var(--red);}
+.status.undetect{color:var(--green);}
+.status.unknown{color:var(--yellow);}
+.status.online{color:var(--green); text-shadow:0 0 10px var(--green);}
+.status.offline{color:var(--gray); opacity:0.7;}
+
+/* Neon-Pfeil */
+.arrow{
+  position: relative;
+  width:100px;
+  height:20px;
+  border-top:5px dashed var(--neon-lila);
+  overflow:hidden;
+  border-radius:6px;
+  animation:wiggle 1.2s infinite ease-in-out;
+}
+.arrow::after{
+  content:'';
+  position:absolute;
+  top:-5px;
+  left:-30%;
+  width:40px;
+  height:32px;
+  background:linear-gradient(90deg,var(--neon-lila),var(--neon-blue));
+  clip-path:polygon(0 0,100% 50%,0 100%);
+  animation:laserFlow 2s linear infinite;
+}
+.arrow::before{
+  content:'';position:absolute;top:-5px;left:-30%;width:100%;height:20px;
+  background:linear-gradient(90deg,var(--neon-lila),var(--neon-blue));
+  opacity:0.2;
+}
+@keyframes wiggle{
+  0%{transform:rotate(-3deg);}
+  25%{transform:rotate(2deg);}
+  50%{transform:rotate(0deg);}
+  75%{transform:rotate(-2deg);}
+  100%{transform:rotate(3deg);}
+}
+@keyframes laserFlow{
+  0%{left:-30%;}
+  100%{left:100%;}
+}
+
+/* YouTube Button */
+.youtube-btn{
+  padding:8px 16px;
+  background:linear-gradient(90deg,var(--neon-pink),var(--neon-blue));
+  color:#fff;
+  font-weight:900;
+  text-decoration:none;
+  border-radius:10px;
+  box-shadow:0 0 15px var(--neon-pink);
+  font-size:16px;
+  transition:all 0.2s ease-in-out;
+  animation:pulseBtn 2s infinite alternate;
+}
+.youtube-btn:hover{
+  box-shadow:0 0 40px var(--neon-pink);
+  transform:scale(1.1);
+}
+
+footer{margin-top:50px;font-size:14px;opacity:0.8;text-align:center;}
+@media(max-width:900px){.slot{flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+
+<header><h1>Trainer/ ModMenu / Manager</h1></header>
+
+<main>
+<div id="login">
+  <input id="secureInput" type="password" placeholder="SecureCode">
+  <button id="loginBtn">Login</button>
+  <div class="error" id="loginError"></div>
+</div>
+
+<div id="manager">
+  <div id="slotsContainer"></div>
+</div>
+</main>
+
+<footer>By GigarazorLp 2025</footer>
+
+<script>
+// Login SHA256
+const MASTER_HASH='b2b2f104d32c638903e151a9b20d6e27b41d8c0c84cf8458738f83ca2f1dd744';
+const loginDiv=document.getElementById('login');
+const managerDiv=document.getElementById('manager');
+const loginBtn=document.getElementById('loginBtn');
+const loginInput=document.getElementById('secureInput');
+const loginError=document.getElementById('loginError');
+
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+loginBtn.addEventListener('click',async()=>{
+  const val=loginInput.value.trim();
+  const hash=await sha256(val);
+  if(hash===MASTER_HASH){
+    loginDiv.style.display='none';
+    managerDiv.style.display='flex';
+    renderSlots();
+  }else{loginError.textContent='Falscher SecureCode';}
+});
+
+// Slots & YouTube
+const slots=[
+{name:'Explosive Mod Menu GTAV', url:'https://explosivemenu.com/', status:'undetect', yt:'https://www.youtube.com/watch?v=7fg1phzA2VU&t=26s'},
+{name:'Positioncheats Mod Menu GTAV', url:'https://positioncheats.company/', status:'undetect', yt:'https://www.youtube.com/watch?v=709ZZJfLdD4'},
+{name:'Stand Mod Menu GTAV', url:'https://stand.sh/', status:'undetect', yt:'https://www.youtube.com/watch?v=qVByrK9-wxs'},
+{name:'Chearax Mod Menu GTAV', url:'https://cherax.menu/', status:'undetect', yt:'https://www.youtube.com/watch?v=vwcHbSzob-k'},
+{name:'Lexis Mod Menu GTAV', url:'https://lexis.re/', status:'undetect', yt:'https://www.youtube.com/watch?v=RkssmGN8i5k'},
+{name:'Rampage SP GTAV', url:'https://de.gta5-mods.com/scripts/rampage-trainer', status:'online', yt:'https://www.youtube.com/watch?v=dq1L0YAFaCM'},
+{name:'Menyoo (Legacy Only)', url:'https://de.gta5-mods.com/scripts/menyoo-2-0', status:'online', yt:'https://www.youtube.com/watch?v=04GiahgFE-0'},
+{name:'Rampage SP RD2', url:'https://www.nexusmods.com/reddeadredemption2/mods/233?tab=files', status:'online', yt:'https://www.youtube.com/watch?v=SLFj8pL2WRc'},
+{name:'Rampage SP RD1', url:'https://www.nexusmods.com/reddeadredemption/mods/520?tab=files', status:'online', yt:'https://www.youtube.com/watch?v=wHAsBOjlW0k'},
+{name:'ScriptHook for GTAV for Trainer SP', url:'https://www.dev-c.com/gtav/scripthookv/', status:'online', yt:'https://www.youtube.com/watch?v=IZcU1ZZ5A20'},
+{name:'ScriptHook for RD2 for Trainer SP', url:'https://www.dev-c.com/rdr2/scripthookrdr2/', status:'online', yt:'https://www.youtube.com/watch?v=eyPMHk24rhU'},
+{name:'ScriptHook for RD1 for Trainer SP', url:'https://www.nexusmods.com/reddeadredemption/mods/164', status:'online', yt:'https://www.youtube.com/watch?v=wHAsBOjlW0k'},
+{name:'Plitch Trainer', url:'https://www.plitch.com', status:'online', yt:'https://www.youtube.com/watch?v=7Pv8fXKEhiQ'},
+{name:'Fling Trainer', url:'https://flingtrainer.com/', status:'online', yt:'https://www.youtube.com/watch?v=0ZiAbakw6fU'},
+{name:'WeMod', url:'https://www.wemod.com', status:'online', yt:'https://www.youtube.com/watch?v=d2otcZsVb_g'}
+];
+
+const slotsContainer=document.getElementById('slotsContainer');
+
+function renderSlots(){
+  slotsContainer.innerHTML='';
+  slots.forEach(slot=>{
+    const div=document.createElement('div');
+    div.className='slot';
+    div.innerHTML=`
+      <a href="${slot.url}" target="_blank">${slot.name}</a>
+      <div class="arrow"></div>
+      <div class="status ${slot.status}">${slot.status.toUpperCase()}</div>
+      <a href="${slot.yt}" target="_blank" class="youtube-btn">▶ YouTube</a>
+    `;
+    slotsContainer.appendChild(div);
+  });
+
+  // Klick-Sound hinzufügen zu allen Buttons & YouTube-Links nach Rendern
+  addClickSound();
+}
+
+// Status ändern
+function updateSlotStatus(slotName, newStatus){
+  const slot = slots.find(s => s.name === slotName);
+  if(slot){
+    slot.status = newStatus.toLowerCase();
+    renderSlots();
+  }
+}
+
+// Klick-Sound
+const clickSound = new Audio('click.mp3');
+
+function addClickSound(){
+  document.querySelectorAll('button, .youtube-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      clickSound.currentTime = 0;
+      clickSound.play();
+    });
+  });
+}
+
+// Beispiel: updateSlotStatus('Super Mod 1', 'offline');
+
+</script>
+
+</body>
+</html>
